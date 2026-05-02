@@ -5,7 +5,6 @@ import './MessageBubble.css';
 
 export default function MessageBubble({ message, isLatest }) {
   const [activeTab, setActiveTab] = useState('insights');
-  const [expanded, setExpanded] = useState(false);
 
   const isUser = message.role === 'user';
   const isError = message.role === 'error';
@@ -16,14 +15,20 @@ export default function MessageBubble({ message, isLatest }) {
   const trials = message.trials || [];
   const hasResearch = pubs.length > 0 || trials.length > 0;
 
-  // Simple markdown-like rendering
   const renderText = (text) => {
     if (!text) return null;
     return text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/^### (.*$)/gm, '<h4 style="color:#4a9eff;margin:8px 0 4px">$1</h4>')
+      .replace(/^## (.*$)/gm, '<h3 style="color:#4a9eff;margin:10px 0 4px">$1</h3>')
+      .replace(/^# (.*$)/gm, '<h2 style="color:#4a9eff;margin:12px 0 4px">$1</h2>')
+      .replace(/^\* (.*$)/gm, '<li style="margin:4px 0">$1</li>')
+      .replace(/^- (.*$)/gm, '<li style="margin:4px 0">$1</li>')
+      .replace(/(<li.*<\/li>)/gs, '<ul style="padding-left:20px;margin:8px 0">$1</ul>')
       .replace(/\[PUB(\d+)\]/g, '<span class="cite-ref">PUB$1</span>')
-      .replace(/\[TRIAL(\d+)\]/g, '<span class="cite-ref trial-ref">TRIAL$1</span>');
+      .replace(/\[TRIAL(\d+)\]/g, '<span class="cite-ref trial-ref">TRIAL$1</span>')
+      .replace(/\n/g, '<br/>');
   };
 
   return (
@@ -45,26 +50,27 @@ export default function MessageBubble({ message, isLatest }) {
         </div>
       )}
 
-      {/* Welcome / plain assistant message */}
+      {/* Plain assistant message (Groq response) */}
       {isAssistant && !llm && (
         <div className="assistant-card welcome-card">
           <div className="assistant-avatar">🔬</div>
           <div className="assistant-body">
-            <p
+            <div
               className="assistant-plain-text"
+              style={{ lineHeight: "1.8", fontSize: "14px", color: "#e0e0e0" }}
               dangerouslySetInnerHTML={{ __html: renderText(message.content) }}
             />
+            <span className="msg-time">{formatTime(message.timestamp)}</span>
           </div>
         </div>
       )}
 
-      {/* Full LLM response */}
+      {/* Full LLM response (old backend - kept for compatibility) */}
       {isAssistant && llm && (
         <div className="assistant-card full-response">
           <div className="assistant-avatar">🔬</div>
           <div className="assistant-body full-width">
 
-            {/* ── Condition Overview ── */}
             {llm.conditionOverview && (
               <div className="response-section overview-section">
                 <div className="section-header">
@@ -78,7 +84,6 @@ export default function MessageBubble({ message, isLatest }) {
               </div>
             )}
 
-            {/* ── Research Insights ── */}
             {llm.researchInsights && (
               <div className="response-section insights-section">
                 <div className="section-header">
@@ -95,7 +100,6 @@ export default function MessageBubble({ message, isLatest }) {
               </div>
             )}
 
-            {/* ── Clinical Trials Insight ── */}
             {llm.clinicalTrialsInsight && (
               <div className="response-section trials-insight-section">
                 <div className="section-header">
@@ -112,7 +116,6 @@ export default function MessageBubble({ message, isLatest }) {
               </div>
             )}
 
-            {/* ── Key Takeaway ── */}
             {llm.keyTakeaway && (
               <div className="response-section takeaway-section">
                 <div className="section-header">
@@ -126,7 +129,6 @@ export default function MessageBubble({ message, isLatest }) {
               </div>
             )}
 
-            {/* ── Source cards tabs ── */}
             {hasResearch && (
               <div className="source-tabs-container">
                 <div className="tab-header">
@@ -145,7 +147,6 @@ export default function MessageBubble({ message, isLatest }) {
                     </button>
                   )}
                 </div>
-
                 <div className="tab-content">
                   {activeTab === 'insights' && (
                     <div className="cards-grid">
@@ -165,7 +166,6 @@ export default function MessageBubble({ message, isLatest }) {
               </div>
             )}
 
-            {/* ── Follow-up suggestions ── */}
             {llm.followUpSuggestions?.length > 0 && (
               <div className="followup-section">
                 <p className="followup-label">You might also ask:</p>
@@ -177,7 +177,6 @@ export default function MessageBubble({ message, isLatest }) {
               </div>
             )}
 
-            {/* ── Disclaimer ── */}
             {llm.disclaimer && (
               <p className="disclaimer-text">⚕️ {llm.disclaimer}</p>
             )}
