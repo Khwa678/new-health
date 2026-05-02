@@ -6,10 +6,10 @@ import ChatWindow from "./components/ChatWindow.jsx";
 import InputPanel from "./components/InputPanel.jsx";
 import OnboardingModal from "./components/OnboardingModal.jsx";
 
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
-import Dashboard from "./Pages/Dashboard";
-import Doctors from "./Pages/Doctors";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import Doctors from "./pages/Doctors";
 
 import "./App.css";
 
