@@ -1,0 +1,74 @@
+/* ─── Typing Indicator ───────────────────────────────────────────────────── */
+
+.typing-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.typing-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--brand-blue-light);
+  border: 2px solid var(--brand-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.typing-bubble {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px 18px 18px 18px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.typing-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.typing-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.typing-steps {
+  font-size: 11px;
+  color: var(--brand-blue);
+  font-weight: 500;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--brand-blue);
+  border-radius: 50%;
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.18s; }
+.dot:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(1); opacity: 0.6; }
+  40%            { transform: scale(1.4); opacity: 1; }
+}

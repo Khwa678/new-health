@@ -1,0 +1,220 @@
+/* ─── Sidebar ────────────────────────────────────────────────────────────── */
+
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 18px 16px;
+}
+
+.sidebar-logo-icon { font-size: 28px; line-height: 1; }
+
+.sidebar-brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.sidebar-tagline { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 12px;
+}
+
+.sidebar-section {
+  padding: 14px 18px;
+}
+
+.sidebar-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.sidebar-empty {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Context items */
+.context-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.context-item-stack {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.context-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.context-value {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: right;
+}
+
+.context-note {
+  text-align: left;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.4;
+  background: var(--border-light);
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.condition-badge {
+  background: var(--brand-blue-light);
+  color: var(--brand-blue);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-card {
+  background: var(--border-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-blue);
+  font-family: var(--font-mono);
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Data sources */
+.sources-list { display: flex; flex-direction: column; gap: 8px; }
+
+.source-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.source-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-blue   { background: var(--brand-blue); }
+.dot-teal   { background: var(--brand-teal); }
+.dot-amber  { background: var(--brand-amber); }
+
+.source-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.source-desc {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Message count */
+.msg-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Footer */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 16px 18px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-reset {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--border-light);
+  border: 1.5px solid var(--border);
+  transition: all 0.15s;
+  margin-bottom: 10px;
+}
+
+.btn-reset:hover {
+  background: var(--brand-red-light);
+  color: var(--brand-red);
+  border-color: var(--brand-red);
+}
+
+.sidebar-credit {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+}

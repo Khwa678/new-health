@@ -1,0 +1,182 @@
+/* ─── Trial Card ─────────────────────────────────────────────────────────── */
+
+.trial-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brand-amber);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  transition: box-shadow 0.15s;
+}
+
+.trial-card:hover {
+  box-shadow: 0 0 0 3px rgba(199,123,0,0.1);
+}
+
+.trial-card-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.trial-index {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--brand-amber);
+  background: var(--brand-amber-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 3px;
+}
+
+.trial-nct {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.trial-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.trial-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.trial-title a:hover {
+  color: var(--brand-amber);
+  text-decoration: underline;
+}
+
+/* Meta grid */
+.trial-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+  margin-bottom: 10px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.meta-value {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.trial-location,
+.trial-interventions {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.location-text {
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Summary */
+.trial-summary { margin-top: 8px; }
+
+.summary-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.expand-btn {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--brand-amber);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+
+.expand-btn:hover { text-decoration: underline; }
+
+/* Eligibility */
+.trial-eligibility {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--border-light);
+  border-radius: var(--radius-sm);
+}
+
+.eligibility-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: 4px;
+  white-space: pre-line;
+}
+
+/* Footer */
+.trial-card-footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.contact-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.contact-link {
+  font-size: 12px;
+  color: var(--brand-blue);
+}
+
+.trial-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-amber);
+  margin-left: auto;
+}
